@@ -1,0 +1,107 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+body {
+  background: peachpuff;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+.box {
+  background: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 30px;
+  border: radius 20px;
+  box-shadow:
+    0 0 128px 0 gainsboro,
+    0 32px 64px -48px black;
+}
+.form-box {
+  width: 450px;
+  margin: 0px 10px;
+}
+.form-box header {
+  font-size: 25px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.form-box form .field {
+  display: flex;
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+.form-box form .input input {
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  outline: none;
+}
+.btn {
+  height: 35px;
+  background-color: darkgray;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 10px;
+  padding: 0px 10px;
+}
+.submit {
+  width: 100%;
+}
+.link {
+  margin-top: 15px;
+}
+
+/*** accueil***/
+.nav {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.liens a {
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 840px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .liens {
+    margin-top: 20px;
+  }
+}
+.message {
+  text-align: center;
+  background: white;
+  padding: 15px 0px;
+  border: 1px solid burlywood;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: brown;
+}
