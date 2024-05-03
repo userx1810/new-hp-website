@@ -20,7 +20,7 @@ formulaire.addEventListener("submit", async (event) => {
       console.log(data);
       // Assuming the server returns a token upon successful login
       localStorage.setItem("token", data.token);
-      window.location.href = "index.html";
+      window.location.href = "front/index.html";
     } else {
       // Handle error response
       console.error("Login failed");
