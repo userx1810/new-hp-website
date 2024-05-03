@@ -12,6 +12,6 @@ async function redirectToPageWithToken(token, pageUrl) {
 
 const token = localStorage.getItem("token");
 
-const pageUrl = "/front/accueil.html";
+const pageUrl = "/index.html";
 
 redirectToPageWithToken(token, pageUrl);

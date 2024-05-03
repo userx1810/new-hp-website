@@ -19,7 +19,7 @@ formulaire.addEventListener("submit", async (event) => {
 
   localStorage.setItem("token", token);
   console.log(data);
-  window.location.href = "/accueil.html";
+  window.location.href = "/front/accueil.html";
 });
 
 const getMyProfile = async () => {
