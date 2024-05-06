@@ -1,37 +1,27 @@
-const express = require("express");
-const UsersController = require("../controllers/UsersController");
-const AuthentificationController = require("../controllers/AuthentificationController");
-const AuthMiddleware = require("../middlewares/auth");
-const mysql = require("mysql");
+const getProfile = async () => {
+  const token = localStorage.getItem("token");
 
-const router = express.Router();
+  try {
+    const response = await fetch("http://localhost:3000/getMyProfile", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "testdb",
-});
-
-connection.connect((err) => {
-  if (err) {
-    console.error("Erreur de connexion à la base de données :", err);
-    return;
-  }
-  console.log("Connecté à la base de données MySQL");
-});
-
-router.get("/getMyProfile", AuthMiddleware.authenticate, (req, res) => {
-  const userId = req.session.userId;
-  const sql = `SELECT * FROM utilisateurs WHERE id = ${userId}`;
-
-  connection.query(sql, (err, result) => {
-    if (err) {
-      console.error("Erreur lors de l'exécution de la requête SQL :", err);
-      return;
+    if (!response.ok) {
+      throw new Error("ne peux pas récupérer le profil utilisateur.");
     }
-    res.json(result[0]);
-  });
-});
 
-module.exports = router;
+    const data = await response.json();
+
+    const emailElement = document.querySelector(".single");
+    emailElement.textContent = `Email: ${data.email}`;
+  } catch (error) {
+    console.error(
+      "Une erreur s'est produite lors de la récupération du profil utilisateur:",
+      error,
+    );
+  }
+};
+
+getProfile();
