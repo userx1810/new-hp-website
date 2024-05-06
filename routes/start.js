@@ -16,6 +16,7 @@ router.get(
   AuthMiddleware.authenticate,
   UsersController.getMyProfile,
 );
+
 module.exports = router;
 
 //* /users en GET = tous les utilisateurs

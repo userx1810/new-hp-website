@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const response = await fetch("http://localhost:3000/getMyProfile", {
-        headers: {
+        headers: { 
           Authorization: `Bearer ${token}`,
         },
       });
