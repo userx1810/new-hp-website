@@ -7,97 +7,104 @@ class UsersController {
       const user = req.user;
       return res.status(200).send(user);
     } catch (error) {
-      console.error("Error in getMyProfile:", error);
-      return res.status(500).send({ message: "Internal server error" });
+      return res.status(500).send({
+        error: "User not found",
+      });
     }
   }
-
+  //app.get(/users)
   async index(req, res) {
     try {
       const users = await prisma.user.findMany();
-      return res.status(200).send(users);
+      return res.status(201).send(users);
     } catch (error) {
-      console.error("Error in index:", error);
-      return res.status(500).send({ message: "Internal server error" });
+      return res.status(500).send({
+        message: error.message,
+      });
     }
   }
-
+  //app.post(/users)
   async store(req, res) {
     try {
-      const { name, email, password } = req.body;
-      const hashedPassword = await hashPassword(password);
+      const body = req.body;
       const user = await prisma.user.create({
         data: {
-          name,
-          email,
-          password: hashedPassword,
+          name: body.username,
+          email: body.email,
+          password: await hashPassword(body.password),
+          last_booster: body.last_booster,
         },
       });
       return res.status(201).send(user);
     } catch (error) {
-      console.error("Error in store:", error);
-      return res.status(500).send({ message: "Internal server error" });
+      return res.status(500).send({
+        error: "Email already exists",
+      });
     }
   }
-
+  //app.get (/users/:id)
   async show(req, res) {
     try {
       const id = parseInt(req.params.id);
       const user = await prisma.user.findUnique({
-        where: { id },
+        where: { id: id },
       });
-      if (!user) {
-        return res.status(404).send({ message: "User not found" });
+      if (user === null) {
+        return res.status(404).send({
+          error: "User not found",
+        });
       }
       return res.status(200).send(user);
     } catch (error) {
-      console.error("Error in show:", error);
-      return res.status(500).send({ message: "Internal server error" });
+      return res.status(500).send({
+        message: error.message,
+      });
     }
   }
-
+  //app.put (/users/:id)
   async update(req, res) {
     try {
-      const id = parseInt(req.params.id);
-      const { name, email } = req.body;
-
-      let user = await prisma.user.findUnique({
-        where: { id },
-      });
-
-      if (!user) {
-        return res.status(404).send({ message: "User not found" });
+      const id = req.params.id;
+      let hashedPassword = null;
+      if (req.body.password !== undefined) {
+        hashedPassword = await hashPassword(req.body.password);
       }
-
-      user = await prisma.user.update({
-        where: { id },
-        data: { name, email },
+      let user = await prisma.user.update({
+        where: { id: parseInt(id) },
+        data: req.body,
       });
-
+      if (hashedPassword !== null) {
+        user = await prisma.user.update({
+          where: { id: parseInt(id) },
+          data: { password: hashedPassword },
+        });
+      }
+      if (user === null) {
+        return res.status(404).send("User not found");
+      }
       return res.status(200).send(user);
     } catch (error) {
-      console.error("Error in update:", error);
-      return res.status(500).send({ message: "Internal server error" });
+      return res.status(500).send({
+        message: error.message,
+      });
     }
   }
-
+  //app.destroy (/users/:id)
   async destroy(req, res) {
-    try {
-      const id = parseInt(req.params.id);
-      const user = await prisma.user.findUnique({
-        where: { id },
-      });
-      if (!user) {
-        return res.status(404).send({ message: "User not found" });
-      }
-      await prisma.user.delete({
-        where: { id },
-      });
-      return res.status(204).send();
-    } catch (error) {
-      console.error("Error in destroy:", error);
-      return res.status(500).send({ message: "Internal server error" });
+    const id = req.params.id;
+    const user = await prisma.user.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (user === null) {
+      return res.status(404).send("User not found");
     }
+
+    const deletedUser = await prisma.user.delete({
+      where: { id: parseInt(id) },
+    });
+
+    return res.status(200).send(deletedUser);
   }
 }
 
