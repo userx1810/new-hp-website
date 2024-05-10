@@ -18,9 +18,3 @@ router.get(
 );
 
 module.exports = router;
-
-//* /users en GET = tous les utilisateurs
-//* /users en POST = créer un utilisateur
-//* /users/:id en GET = un utilisateur
-//* /users/:id en PUT = modifier un utilisateur
-//* /users/:id en DELETE = supprimer un utilisateur

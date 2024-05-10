@@ -3,19 +3,17 @@ const jsonwebtoken = require("jsonwebtoken");
 
 class AuthMiddleware {
   async authenticate(req, res, next) {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
+    try {
+      const authHeader = req.headers["authorization"];
+      const token = authHeader && authHeader.split(" ")[1];
 
-    console.log("Authenticating token: ", token);
+      if (!token) return res.status(401).send("Token missing");
 
-    if (token == null) return res.sendStatus(401);
+      console.log("Authenticating token: ", token);
 
-    jsonwebtoken.verify(token, process.env.JWT_SECRET, async (err, payload) => {
-      console.log(err);
+      const decodedToken = jsonwebtoken.verify(token, process.env.JWT_SECRET);
 
-      if (err) return res.sendStatus(403);
-
-      const email = payload.email;
+      const email = decodedToken.email;
 
       const user = await prisma.user.findUnique({
         where: {
@@ -23,12 +21,15 @@ class AuthMiddleware {
         },
       });
 
-      if (!user) return res.sendStatus(403);
+      if (!user) return res.status(403).send("User not found");
 
       req.user = user;
 
       next();
-    });
+    } catch (error) {
+      console.error("Authentication error:", error);
+      return res.status(500).send("Authentication error");
+    }
   }
 }
 
