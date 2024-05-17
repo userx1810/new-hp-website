@@ -1,31 +1,21 @@
-const getProfile = async () => {
-  if (typeof localStorage !== "undefined") {
-    const token = localStorage.getItem("token");
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch("http://localhost:3000/getMyProfile", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
-    try {
-      const response = await fetch("http://localhost:3000/getMyProfile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Impossible de récupérer le profil utilisateur.");
-      }
-
-      const data = await response.json();
-
-      const emailElement = document.querySelector(".single");
-      emailElement.textContent = `Email: ${data.email}`;
-    } catch (error) {
-      console.error(
-        "Une erreur s'est produite lors de la récupération du profil utilisateur:",
-        error,
-      );
+    if (!response.ok) {
+      throw new Error("Failed to fetch profile data");
     }
-  } else {
-    console.error("localStorage n'est pas disponible dans cet environnement.");
-  }
-};
 
-getProfile();
+    const userData = await response.json();
+
+    //On récup les données
+    document.getElementById("nom").innerText = userData.name;
+    document.getElementById("email").innerText = userData.email;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+});

@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = await response.json();
         console.log(data);
         localStorage.setItem("token", data.token);
+        await getMyProfile();
         window.location.href = "index.html";
       } else {
-        // Handle error response
         console.error("Login failed");
       }
     } catch (error) {
@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  const getMyProfile = async () => {
+  async function getMyProfile() {
     const token = localStorage.getItem("token");
 
     try {
       const response = await fetch("http://localhost:3000/getMyProfile", {
-        headers: { 
+        headers: {
           Authorization: `Bearer ${token}`,
         },
       });
@@ -49,5 +49,5 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       console.error("An error occurred:", error);
     }
-  };
+  }
 });

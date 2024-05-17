@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.card {
+  display: inline-block;
+  width: 150px;
+  height: 200px;
+  background-color: lightgray;
+  margin: 10px;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.open-booster {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}

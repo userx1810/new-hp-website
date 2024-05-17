@@ -19,14 +19,14 @@ class AuthentificationController {
 
       const isSamePassword = await comparePassword(
         body.password,
-        user.password
+        user.password,
       );
 
       if (!isSamePassword) {
         return res.status(401).send("Unauthorized");
       }
 
-      // ICI ON GENERE UN TOKEN
+      // ON GENERE UN TOKEN
 
       const token = generateToken(user);
 

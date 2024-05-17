@@ -4,42 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/styles.css" />
-
-    <title>Login</title>
+    <title>Connexion</title>
   </head>
   <body>
-    <img id="background" src="images/wallpapers-hogwarts-legacy.jpg" />
     <div class="container">
+      <header>Connexion</header>
       <div class="box form-box">
-        <header>Identification</header>
-        <form id="formulaire" action="" method="post">
+        <form id="form">
           <div class="field input">
             <label for="email">Email</label>
-            <input type="text" name="email" id="email" required />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="on"
+              placeholder="Entrez votre email"
+              required
+            />
           </div>
-
           <div class="field input">
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" required />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="on"
+              placeholder="Entrez votre mot de passe"
+              required
+            />
           </div>
-
           <div class="field">
             <input
               type="submit"
               class="btn"
               name="submit"
-              value="Connexion"
-              required
+              value="Se connecter"
             />
           </div>
           <div class="links">
-            Tu n'as pas de compte?
-            <a href="createAccount.html">Créer un compte</a>
+            Vous n'avez pas de compte ?
+            <a href="createAccount.html">Inscrivez-vous</a>
           </div>
         </form>
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>

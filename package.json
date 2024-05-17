@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch index.js"
+    "start": "node index.js --port=3000",
+    "dev": "node index.js --port=3000",
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,6 @@
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
-    "prisma": "^5.12.1"
+    "prisma": "^5.14.0"
   }
 }

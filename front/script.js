@@ -1,37 +1,30 @@
-const formulaire = document.getElementById("formulaire");
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("form");
 
-formulaire.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-  const response = await fetch("http://localhost:3000/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        localStorage.setItem("token", data.token);
+        window.location.href = "/front/accueil.html";
+      } else {
+        console.error("Login failed");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   });
-
-  const data = await response.json();
-
-  const token = data.token;
-
-  localStorage.setItem("token", token);
-  console.log(data);
-  window.location.href = "/front/accueil.html";
 });
-
-const getMyProfile = async () => {
-  const token = localStorage.getItem("token");
-
-  const response = await fetch("http://localhost:3000/getMyProfile", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  const data = await response.json();
-
-  console.log(data);
-};

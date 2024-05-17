@@ -1,133 +1,103 @@
 @font-face {
   font-family: "HarryPotter";
-  src: url("fonts/HarryPotter-ov4z.ttf") format("truetype");
+  src:
+    url("../polices/HARRYP__.TTF") format("woff2"),
+    url("../polices/HarryPotter-ov4z.ttf") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "HarryPotter", sans-serif;
-}
-
-#background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("../images/bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
+  width: 420px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(9px);
+  color: #fff;
+  border-radius: 12px;
+  padding: 30px 40px;
 }
 
-.box {
-  background: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-  border-radius: 1.25rem;
-  box-shadow:
-    0 0 128px 0 gainsboro,
-    0 32px 64px -48px black;
-}
-
-.form-box {
-  width: 450px;
-  margin: 0px 10px;
-}
-
-.form-box header {
-  font-size: 25px;
-  font-weight: 600;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
-.form-box form .field {
-  display: flex;
-  margin-bottom: 10px;
-  flex-direction: column;
-}
-
-.form-box form .input input {
-  height: 2.5rem;
-  width: 100%;
-  font-size: 1rem;
-  padding: 0 10px;
-  border-radius: 0.3rem;
-  border: 1px solid;
-  outline: none;
-}
-
-.btn {
-  height: 2.2rem;
-  background-color: darkgray;
-  border: 0;
-  border-radius: 0.3125rem;
-  color: white;
-  font-size: 0.9375rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-top: 10px;
-  padding: 0 10px;
-}
-
-.submit {
-  width: 100%;
-}
-
-.link {
-  margin-top: 15px;
-}
-
-.nav {
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem 1.25rem;
-  z-index: 100;
-}
-
-.logo {
-  font-size: 1.6rem;
-  font-weight: 900;
-}
-
-.liens a {
-  margin-left: 1.25rem;
-}
-
-@media only screen and (max-width: 52.5rem) {
-  .nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .liens {
-    margin-top: 1.25rem;
-  }
-}
-
-.message {
+.container header {
+  font-size: 36px;
   text-align: center;
-  background: white;
-  padding: 0.9rem 0;
-  border: 1px solid burlywood;
-  border-radius: 0.3rem; /* 5px */
-  margin-bottom: 10px;
-  color: brown;
+  margin-bottom: 30px;
+}
+
+.form-box .field {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.form-box .field input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+}
+
+.form-box .field input::placeholder {
+  color: #fff;
+}
+
+.form-box .field label {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.form-box .field .btn {
+  width: 100%;
+  height: 3.4rem;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.form-box .links {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+
+.form-box .links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-box .links a:hover {
+  text-decoration: underline;
 }

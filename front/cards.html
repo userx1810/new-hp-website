@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <title>Collection de cartes</title>
+  </head>
+  <body>
+    <header>
+      <div class="search-wrapper">
+        <div class="input-holder">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Rechercher par nom, acteur ou maison..."
+          />
+          <button class="search-icon" onclick="searchToggle(element, event);">
+            <span></span>
+          </button>
+        </div>
+        <span class="close" onclick="searchToggle(element, event);"></span>
+      </div>
+      <div class="menu">
+        <img
+          src="data:image/png;base64,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"
+        />
+        <ul>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="accueil.html">Accueil</a></li>
+          <li><a href="booster.html">Booster</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div id="cards-container" class="container"></div>
+
+    <script>
+      fetch("https://hp-api.lainocs.fr/characters")
+        .then((response) => response.json())
+        .then((data) => {
+          const cardsContainer = document.getElementById("cards-container");
+
+          const filterCharacters = (searchTerm) => {
+            return data.filter((character) => {
+              const actorMatch = character.actor
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
+              const nameMatch = character.name
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
+              const houseMatch = character.house
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
+              return actorMatch || nameMatch || houseMatch;
+            });
+          };
+
+          const displayCharacters = (characters) => {
+            cardsContainer.innerHTML = "";
+            characters.forEach((character) => {
+              const card = document.createElement("div");
+              card.classList.add("card");
+
+              card.innerHTML = `
+              <img src="${character.image}" alt="${character.name}">
+              <h2>${character.name}</h2>
+              <p><strong>House:</strong> ${character.house}</p>
+              <p><strong>Role:</strong> ${character.role}</p>
+              <p><strong>Actor:</strong> ${character.actor}</p>
+            `;
+
+              cardsContainer.appendChild(card);
+            });
+          };
+
+          // Affiche tous les perosnnages
+          displayCharacters(data);
+
+          document
+            .getElementById("searchInput")
+            .addEventListener("input", (event) => {
+              const searchTerm = event.target.value;
+              const filteredCharacters = filterCharacters(searchTerm);
+              displayCharacters(filteredCharacters);
+            });
+        })
+        .catch((error) => console.log("Error fetching data:", error));
+    </script>
+  </body>
+</html>

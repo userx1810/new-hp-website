@@ -1,0 +1,109 @@
+body {
+  background: url("../images/light-blue-blurred-background-abstract-colorful-illustration-with-gradient-smart-design-for-your-apps-vector.jpg")
+    no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+}
+
+.search-wrapper {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 7%;
+  text-align: center;
+  z-index: 1;
+}
+
+.menu {
+  width: 85%;
+  margin: auto;
+  padding: 35px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu ul li {
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  margin: 20px;
+}
+
+.menu ul li a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu ul li::after {
+  background: gold;
+  content: "";
+  width: 0;
+  height: 3px;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  transition: 0.5s;
+}
+
+.menu ul li:hover::after {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 100px;
+}
+
+.search-input {
+  position: relative;
+  padding: 15px;
+  width: 300px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.card {
+  margin: 20px;
+  padding: 30px;
+  background-image: url("https://gamepedia.cursecdn.com/paladins_gamepedia/thumb/2/21/CardSkin_Frame_Specialty_b.png/405px-CardSkin_Frame_Specialty_b.png?version=a14e6b3f3a5939d149f503cdc18bc384");
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.card img {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 12px;
+}

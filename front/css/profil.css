@@ -5,9 +5,32 @@ body {
   background-color: #222222;
 }
 
+header {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+header nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .container {
   max-width: 800px;
   margin: 20px auto;
+  margin-top: 10%;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -19,26 +42,26 @@ h1 {
   color: #333;
 }
 
-.profile {
+.profil {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.profile img {
+.profil img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   margin-right: 20px;
 }
 
-.profile h2 {
+.profil h2 {
   margin: 0;
   color: #333;
 }
 
-.profile p {
+.profil p {
   margin-top: 5px;
   color: #666;
 }
@@ -55,4 +78,12 @@ h1 {
 .info p {
   color: #666;
   margin: 0;
+}
+
+footer {
+  margin-top: 5%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
 }
