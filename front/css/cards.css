@@ -142,7 +142,7 @@ header {
   margin: 0;
   font-size: 12px;
 }
-/* Ajouter des styles pour le bouton coeur */
+
 .heart-btn {
   width: 30px;
   height: 30px;
@@ -150,10 +150,12 @@ header {
   border: none;
   outline: none;
   cursor: pointer;
-  background-image: url("heart-empty_1.png"); /* Image du bouton coeur vide */
-  background-size: cover;
 }
 
-.heart-btn.active {
-  background-image: url("heart-9.png"); /* Image du bouton coeur rempli */
+.heart-btn i {
+  color: #000;
+}
+
+.heart-btn.active i {
+  color: red;
 }
