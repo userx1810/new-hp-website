@@ -1,6 +1,12 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #fefefe;
+  --background-image: url("../images/light-blue-blurred-background-abstract-colorful-illustration-with-gradient-smart-design-for-your-apps-vector.jpg");
+  --card-background-image: url("https://gamepedia.cursecdn.com/paladins_gamepedia/thumb/2/21/CardSkin_Frame_Specialty_b.png/405px-CardSkin_Frame_Specialty_b.png?version=a14e6b3f3a5939d149f503cdc18bc384");
+}
+
 body {
-  background: url("../images/light-blue-blurred-background-abstract-colorful-illustration-with-gradient-smart-design-for-your-apps-vector.jpg")
-    no-repeat;
+  background: var(--background-image) no-repeat;
   background-size: cover;
   background-position: center;
   font-family: Arial, sans-serif;
@@ -9,6 +15,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 header {
   width: 100%;
   padding: 10px 0;
@@ -38,7 +45,7 @@ header {
 }
 
 .search-input:focus {
-  border-color: #007bff;
+  border-color: var(--primary-color);
 }
 
 .search-icon {
@@ -73,13 +80,13 @@ header {
 }
 
 .menu ul li a {
-  color: rgb(254, 254, 254);
+  color: var(--secondary-color);
   text-decoration: none;
   text-transform: uppercase;
 }
 
 .menu ul li::after {
-  background: gold;
+  background: var(--primary-color);
   content: "";
   width: 0;
   height: 3px;
@@ -102,10 +109,11 @@ header {
   margin-top: 100px;
 }
 
-.card {
+.card,
+.card-detail {
   margin: 20px;
   padding: 30px;
-  background-image: url("https://gamepedia.cursecdn.com/paladins_gamepedia/thumb/2/21/CardSkin_Frame_Specialty_b.png/405px-CardSkin_Frame_Specialty_b.png?version=a14e6b3f3a5939d149f503cdc18bc384");
+  background-image: var(--card-background-image);
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow:
@@ -114,20 +122,38 @@ header {
   border-radius: 10px;
 }
 
-.card img {
+.card img,
+.card-detail img {
   width: 120px;
   height: 160px;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.card h2 {
+.card h2,
+.card-detail h2 {
   margin-top: 10px;
   margin-bottom: 5px;
   font-size: 16px;
 }
 
-.card p {
+.card p,
+.card-detail p {
   margin: 0;
   font-size: 12px;
+}
+/* Ajouter des styles pour le bouton coeur */
+.heart-btn {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-image: url("heart-empty_1.png"); /* Image du bouton coeur vide */
+  background-size: cover;
+}
+
+.heart-btn.active {
+  background-image: url("heart-9.png"); /* Image du bouton coeur rempli */
 }
