@@ -1,11 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("form");
-
-  form.addEventListener("submit", async (event) => {
+document
+  .getElementById("registerForm")
+  .addEventListener("submit", async function (event) {
     event.preventDefault();
 
+    const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+
+    const data = {
+      name: username,
+      email: email,
+      password: password,
+    };
 
     try {
       const response = await fetch("http://localhost:3000/users", {
@@ -13,41 +19,18 @@ document.addEventListener("DOMContentLoaded", function () {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        localStorage.setItem("token", data.token);
-        await getMyProfile();
-        window.location.href = "index.html";
+        window.location.href = "index.html"; // Redirige si jamais ça fonctionne
       } else {
-        console.error("Login failed");
+        const errorData = await response.json();
+        console.error("Erreur:", errorData.message);
+        alert("Erreur lors de l'inscription : " + errorData.message);
       }
     } catch (error) {
-      console.error("An error occurred:", error);
+      console.error("Erreur :", error);
+      alert("Erreur : " + error.message);
     }
   });
-
-  async function getMyProfile() {
-    const token = localStorage.getItem("token");
-
-    try {
-      const response = await fetch("http://localhost:3000/getMyProfile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-      } else {
-        console.error("Failed to fetch profile data");
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
-    }
-  }
-});

@@ -1,21 +1,119 @@
+body {
+  background: url("../images/booster2.jpeg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   text-align: center;
   margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+.menu {
+  width: 85%;
+  margin: auto;
+  padding: 35px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu ul li {
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  margin: 20px;
+}
+
+.menu ul li a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.menu ul li::after {
+  background: gold;
+  content: "";
+  width: 0;
+  height: 3px;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  transition: 0.5s;
+}
+.menu ul li:hover::after {
+  width: 100%;
+}
+
+.texte {
+  top: 80px;
+  display: flex;
+  width: 100%;
+  font-size: 40px;
+  margin-top: 8px;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+
+  display: flex;
+  color: rgb(255, 225, 59);
+}
+.texte h1 {
+  display: inline;
+  text-align: center;
 }
 
 .card {
-  display: inline-block;
-  width: 150px;
-  height: 200px;
-  background-color: lightgray;
+  width: 200px; 
+  height: 300px; 
+  background-color: white;
   margin: 10px;
   border-radius: 8px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card img {
+  width: 150px; 
+  height: 150px; 
+  margin: 0 auto;
+}
+
+.card-details {
+  text-align: center;
 }
 
 .open-booster {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 15px 25px;
+  margin-top: 65px;
+  font-size: 24px;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #ffffff; 
+  background-color: #d4af37; 
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #a88500; 
+  transition: top 0.5s; 
+}
+
+.open-booster:hover {
+  background-color: #ffd700; 
+}
+
+.open-booster:active {
+  background-color: #8b4513; 
+  box-shadow: 0 5px #5d3d1e; 
+  transform: translateY(4px);
 }
