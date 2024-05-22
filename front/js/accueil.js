@@ -1,10 +1,10 @@
-"use strict";
+// burgerMenu.js
 
-const menuIcon = document.getElementById("bx-menu");
-const menu = document.getElementById("menu");
-const sidebar = document.querySelector(".sidebar");
+document.addEventListener("DOMContentLoaded", () => {
+  const burgerMenu = document.querySelector(".burger-menu");
+  const menuItems = document.querySelector(".menu-items");
 
-menuIcon.addEventListener("click", () => {
-  menu.classList.toggle("active");
-  sidebar.classList.toggle("active");
+  burgerMenu.addEventListener("click", () => {
+    menuItems.classList.toggle("active");
+  });
 });
