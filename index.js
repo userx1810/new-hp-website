@@ -4,13 +4,15 @@ const express = require("express");
 const routes = require("./config/routes/start");
 const cors = require("cors");
 const app = express();
+const ip = require("ip");
+const ipAdress = ip.address();
 const port = 3000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", routes);
-
+let lastHouseVisited = "Gryffindor";
 // Connexion à la base de données
 const mysql = require("mysql");
 const connection = mysql.createConnection({
@@ -33,6 +35,13 @@ app.post("/save-card", (req, res) => {
       res.status(200).send("Carte enregistrée avec succès");
     }
   });
+});
+app.get("/", (req, res) => {
+  res.json({ lastHouseVisited: lastHouseVisited });
+});
+app.post("/", (req, res) => {
+  lastHouseVisited = req.body.house;
+  res.json({ lastHouseVisited: lastHouseVisited });
 });
 
 // Récupérer les données des cartes de l'utilisateur
@@ -57,7 +66,7 @@ app.get("/user-cards/:userId", (req, res) => {
 
 try {
   app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Example app listening on port http://${ipAdress}:${port}`);
   });
 } catch (error) {
   console.error(`Failed to start server: ${error}`);

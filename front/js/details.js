@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get("name");
 
+  async function postToRaspberry(house) {
+    const data = await fetch("http://localhost:3000/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ house: house }),
+    });
+  }
+
   if (name) {
     fetch("https://hp-api.lainocs.fr/characters")
       .then((response) => response.json())
@@ -25,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           cardDetails.innerHTML = "<p>Character not found</p>";
         }
+        console.log(character.house);
+        postToRaspberry(character.house);
       })
       .catch((error) => console.log("Error fetching data:", error));
   } else {
