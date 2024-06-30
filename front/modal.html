@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="css/profil.css" />
+  </head>
+  <body>
+    <header>
+      <div class="menu">
+        <ul>
+          <li><a href="accueil.html">Accueil</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="booster.html">Booster</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="backgroundImg">
+      <img src="images/boosterimage.jpg" />
+    </div>
+    <div class="container">
+      <h1>Profil d'utilisateur</h1>
+      <div class="profil">
+        <img src="images/hppdp.jpg" alt="Profile Picture" />
+        <div>
+          <h2 id="nom">Nom</h2>
+        </div>
+      </div>
+      <div class="info">
+        <h3>Informations</h3>
+        <p>Email: <span id="email" class="single"></span></p>
+        <p>Cartes: <span id="cartes"></span></p>
+        <button id="openModalButton">Échanger des Cartes</button>
+      </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="exchangeModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Échange de Cartes</h2>
+        <form id="exchangeForm">
+          <label for="yourCards">Vos Cartes:</label>
+          <select id="yourCards" multiple>
+            <!-- Options will be populated dynamically -->
+          </select>
+          <label for="theirUsername">Nom d'utilisateur du destinataire:</label>
+          <input type="text" id="theirUsername" required />
+          <label for="theirCards">Cartes à échanger:</label>
+          <select id="theirCards" multiple>
+            <!-- Options will be populated dynamically -->
+          </select>
+          <button type="submit">Échanger</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Stess. Tous droits réservés.</p>
+    </footer>
+
+    <script src="js/profileData.js"></script>
+    <script src="js/modal.js"></script>
+  </body>
+</html>

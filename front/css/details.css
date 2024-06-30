@@ -1,0 +1,32 @@
+.card-detail {
+  margin: 20px;
+  padding: 30px;
+  background-image: url("https://gamepedia.cursecdn.com/paladins_gamepedia/thumb/2/21/CardSkin_Frame_Specialty_b.png/405px-CardSkin_Frame_Specialty_b.png?version=a14e6b3f3a5939d149f503cdc18bc384");
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  margin: auto;
+}
+
+.card-detail img {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-detail h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.card-detail p {
+  margin: 0;
+  font-size: 12px;
+}
